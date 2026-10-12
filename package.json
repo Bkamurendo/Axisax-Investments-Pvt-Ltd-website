@@ -1,0 +1,13 @@
+{
+  "name": "axisax-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Corporate website for AXISAX INVESTMENTS (PRIVATE) LIMITED",
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "node build.js",
+    "check": "node build.js && node scripts/check.js",
+    "serve": "node build.js && node scripts/serve.js"
+  }
+}
