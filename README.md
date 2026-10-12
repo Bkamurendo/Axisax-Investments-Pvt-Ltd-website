@@ -48,18 +48,23 @@ Features: responsive layout and mobile menu, keyboard and screen-reader support,
 
 Run `npm run check` after editing.
 
-## Connecting the forms (required before launch)
+## Forms (FormSubmit — one activation step needed)
 
-The forms will not send anything until an endpoint is configured. Until then, after a visitor fills in a form the site tells them plainly that **nothing has been sent**, and offers pre-filled email and WhatsApp messages instead. The site never says an enquiry was submitted unless the endpoint confirms it, as the blueprint requires (§8).
+All three forms send to **bkamurendo.work1@gmail.com** through [FormSubmit](https://formsubmit.co), a free service that needs no account. **Before submissions arrive, the inbox owner must activate them once:**
 
-To enable online sending:
+1. After the site is live, submit a test enquiry through each form on the live site.
+2. FormSubmit emails an **"Activate Form"** link to bkamurendo.work1@gmail.com (check spam too). Click it.
+3. Submit another test, including one with an attachment, and confirm the email arrives.
 
-1. Create a form endpoint with a provider that accepts `multipart/form-data` with file uploads and returns a 2xx response, for example [Formspree](https://formspree.io) (file uploads need a paid plan) or your own backend.
-2. Put the endpoint URLs in `src/data/site.js` → `forms.quote`, `forms.supplier`, `forms.contact`.
-3. Send it to a **monitored** inbox and, ideally, a lead tracker or CRM.
-4. Test each form, including attachments and the error state, before launch.
+Until activation, visitors are told their enquiry **could not be sent** and are offered pre-filled email and WhatsApp messages instead. The site only confirms that an enquiry was sent once FormSubmit reports success (Blueprint §8).
 
-Spam protection: each form has a hidden honeypot field named `_gotcha`, which Formspree recognises. Add the provider's CAPTCHA if spam gets through.
+How it works:
+- Text-only submissions are sent in the background, and the visitor sees the result on the same page.
+- Submissions with attachments (5 MB in total at most) are posted directly to FormSubmit, which may show a quick spam check and then redirects to `/thank-you/` only after accepting the submission.
+- Spam protection comes from FormSubmit's `_honey` honeypot field, plus FormSubmit's CAPTCHA on direct posts.
+- Emails arrive as a table, with the visitor's address set as reply-to.
+
+**Changing the address or provider:** edit `forms` in `src/data/site.js`. After activation, FormSubmit also offers a random alias you can use in place of the email address in the URL. To switch to another provider (e.g. Formspree, which adds a dashboard), paste its endpoint URLs there instead. Leaving an endpoint empty turns that form's online sending off.
 
 ## Deployment
 
@@ -84,6 +89,7 @@ The site is written to avoid unverified claims, but these items still need the c
 - [ ] **Photography:** none is used. Add only genuine, licensed images that don't suggest stock, warehouses or facilities Axisax doesn't have.
 - [ ] **Privacy Notice and Terms:** review the drafts against the company's actual quotation, payment, delivery, returns and warranty rules, and get advice where needed.
 - [ ] **Company email domain:** move from Gmail to a company-domain address with SPF, DKIM and DMARC when practical.
+- [ ] **Forms:** activate FormSubmit and test all three forms on the live site (see Forms).
 - [ ] **Analytics:** add a privacy-friendly analytics tool if wanted, and update the Privacy Notice to match.
 
 ## Future growth

@@ -93,7 +93,7 @@ ${pageHero({ eyebrow: 'Get a quotation', title: 'Request a Quote', lead: 'Tell u
         ${radios({ name: 'fulfilment', legend: 'Delivery, collection or installation', options: ['Delivery', 'Collection', 'Installation or setup needed', 'Not sure yet'] })}
 
         <h2 class="form-section">4. Attachments and notes</h2>
-        ${fileInput({ name: 'attachments', label: 'Attachments', hint: 'BOQ, specification sheet, product photo or RFQ document. PDF, Word, Excel, CSV, JPG or PNG; up to 10 MB in total.' })}
+        ${fileInput({ name: 'attachments', label: 'Attachments', hint: 'BOQ, specification sheet, product photo or RFQ document. PDF, Word, Excel, CSV, JPG or PNG; up to 5 MB in total.' })}
         ${textarea({ name: 'notes', label: 'Anything else we should know?', rows: 4, hint: 'For example: submission deadline, budget, reference number or preferred brands.' })}
         <div class="field">
           <label class="choice" for="f-request_documents"><input type="checkbox" id="f-request_documents" name="request_documents" value="yes"><span>Please include company registration documents with the quotation.</span></label>
@@ -166,7 +166,7 @@ ${pageHero(
         </div>
 
         <h2 class="form-section">4. Documents</h2>
-        ${fileInput({ name: 'catalogue', label: 'Catalogue and wholesale price list', hint: 'PDF, Word, Excel, CSV, JPG or PNG; up to 10 MB in total across all attachments.' })}
+        ${fileInput({ name: 'catalogue', label: 'Catalogue and wholesale price list', hint: 'PDF, Word, Excel, CSV, JPG or PNG; up to 5 MB in total across all attachments.' })}
         ${fileInput({ name: 'quality_documents', label: 'Quality, regulatory or authorisation documents', hint: 'For example: certificates, registrations or distributor authorisation letters.' })}
         ${textarea({ name: 'message', label: 'Message', rows: 4 })}
         ${consent(L, 'I agree that Axisax may store and use these details to assess and contact my company about supply opportunities.')}`,
@@ -241,4 +241,21 @@ ${pageHero({ eyebrow: 'Get in touch', title: 'Contact Axisax', lead: 'Questions,
   },
 };
 
-export default [quote, supplier, contact];
+const thanks = {
+  path: 'thank-you/',
+  noindex: true,
+  title: 'Thank you',
+  description: 'Your enquiry has been sent to Axisax.',
+  body: (L) => `
+${pageHero({ eyebrow: 'Enquiry sent', title: 'Thank you – your enquiry has been sent', lead: 'We have received your details and will contact you using the information you provided.' }, L)}
+<section class="section">
+  <div class="container narrow">
+    <div class="hero-actions">
+      <a class="btn btn-primary btn-lg" href="${L()}">Back to the homepage</a>
+      <a class="btn btn-secondary btn-lg" href="${L('product-categories/')}">Browse categories</a>
+    </div>
+  </div>
+</section>`,
+};
+
+export default [quote, supplier, contact, thanks];

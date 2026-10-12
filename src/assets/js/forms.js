@@ -58,7 +58,7 @@
       return '';
     }
     if (el.type === 'file') {
-      var max = parseFloat(el.getAttribute('data-max-mb') || '10') * 1024 * 1024;
+      var max = parseFloat(el.getAttribute('data-max-mb') || '5') * 1024 * 1024;
       var bad = Array.prototype.slice.call(el.files || []).filter(function (f) {
         return ALLOWED.indexOf(f.name.split('.').pop().toLowerCase()) === -1;
       });
@@ -85,7 +85,7 @@
 
   function fields(form) {
     return $$('input, select, textarea', form).filter(function (el) {
-      return el.name && el.type !== 'hidden' && el.name !== '_gotcha';
+      return el.name && el.type !== 'hidden' && el.name.charAt(0) !== '_';
     });
   }
 
@@ -180,6 +180,18 @@
     $('.notice', status).focus();
   }
 
+  // FormSubmit's AJAX endpoint takes JSON; other providers get multipart data.
+  function requestFor(form, endpoint) {
+    var data = new FormData(form);
+    if (!/formsubmit\.co\/ajax\//.test(endpoint)) return { method: 'POST', body: data, headers: { Accept: 'application/json' } };
+    var json = {};
+    data.forEach(function (v, k) {
+      if (typeof v !== 'string') return;
+      json[k] = k in json ? json[k] + ' | ' + v : v;
+    });
+    return { method: 'POST', body: JSON.stringify(json), headers: { 'Content-Type': 'application/json', Accept: 'application/json' } };
+  }
+
   function submit(form) {
     var endpoint = form.getAttribute('data-endpoint');
     var btn = $('button[type="submit"]', form);
@@ -200,9 +212,23 @@
     btn.textContent = 'Sending…';
     $('.form-status', form).innerHTML = '';
 
-    fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+    // Files can't go through FormSubmit's AJAX endpoint: submit the form
+    // normally instead. FormSubmit only redirects to our thank-you page once
+    // it has accepted the submission.
+    if (/formsubmit\.co\/ajax\//.test(endpoint) && filesOf(form).length) {
+      $('input[name="_next"]', form).value = new URL(form.getAttribute('data-thanks'), window.location.href).href;
+      HTMLFormElement.prototype.submit.call(form);
+      return;
+    }
+
+    fetch(endpoint, requestFor(form, endpoint))
       .then(function (res) {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json().catch(function () { return {}; }).then(function (data) {
+          // FormSubmit answers 200 with success "false" e.g. before activation.
+          if (!res.ok || data.success === false || data.success === 'false' || data.ok === false) throw new Error(data.message || 'HTTP ' + res.status);
+        });
+      })
+      .then(function () {
         form.reset();
         $$('[data-line-item]', form).slice(1).forEach(function (n) { n.remove(); });
         syncItems(form);
@@ -292,7 +318,7 @@
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var hp = $('input[name="_gotcha"]', form);
+      var hp = $('input[name="_honey"]', form);
       if (hp && hp.value) return; // likely spam
       if (validate(form)) submit(form);
     });
@@ -300,7 +326,7 @@
     // Re-check a field once the visitor corrects it.
     form.addEventListener('change', function (e) {
       var el = e.target;
-      if (!el.name || el.name === '_gotcha') return;
+      if (!el.name || el.name.charAt(0) === '_') return;
       if (el.getAttribute('aria-invalid') === 'true' || el.type === 'file') setError(el, validateField(el, form));
     });
   });

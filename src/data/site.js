@@ -31,15 +31,18 @@ export const site = {
     responseTime: '', // e.g. 'within one business day' once confirmed
   },
 
-  // Form delivery endpoints (e.g. Formspree, Web3Forms or your own backend).
-  // While an endpoint is empty, the form validates input and then tells the
-  // visitor plainly that nothing was sent, offering email/WhatsApp instead.
-  // The site never claims an enquiry was submitted unless the endpoint
-  // responds with success (Blueprint §8).
+  // Form delivery endpoints. By default forms go through FormSubmit
+  // (https://formsubmit.co), which emails each submission to the address below
+  // and needs no account: the first submission sends an "Activate Form" email
+  // to that inbox, and nothing is delivered until the link in it is clicked.
+  // Any other endpoint that accepts multipart POSTs (e.g. Formspree) also works.
+  // An empty endpoint makes the form tell visitors plainly that nothing was
+  // sent and offer email/WhatsApp instead. The site never claims an enquiry
+  // was submitted unless the endpoint confirms success (Blueprint §8).
   forms: {
-    quote: '',
-    supplier: '',
-    contact: '',
+    quote: 'https://formsubmit.co/ajax/bkamurendo.work1@gmail.com',
+    supplier: 'https://formsubmit.co/ajax/bkamurendo.work1@gmail.com',
+    contact: 'https://formsubmit.co/ajax/bkamurendo.work1@gmail.com',
   },
 
   // Optional service lines. Blueprint §5 and §16: publish only once confirmed.

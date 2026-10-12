@@ -89,7 +89,7 @@ export function fileInput({ name, label, hint }) {
     label,
     type: 'file',
     hint,
-    attrs: 'multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.jpg,.jpeg,.png" data-max-mb="10"',
+    attrs: 'multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.jpg,.jpeg,.png" data-max-mb="5"',
   });
 }
 
@@ -106,18 +106,24 @@ export function consent(L, text) {
 // Wraps fields in a form wired to /assets/js/forms.js.
 export function formShell({ id, name, endpoint, submitLabel, subject, fields, L }) {
   const wa = whatsappLink();
+  // FormSubmit's AJAX endpoint cannot take file uploads, so forms with files
+  // (and visitors without JavaScript) post to the standard endpoint, which
+  // redirects to the thank-you page only after accepting the submission.
+  const action = endpoint.replace('formsubmit.co/ajax/', 'formsubmit.co/');
   return `
-<form class="enquiry-form" id="${id}" data-form-name="${esc(name)}" data-endpoint="${esc(endpoint)}" data-email="${esc(site.contact.email)}" data-whatsapp="${esc(wa)}"
-  ${endpoint ? `action="${esc(endpoint)}" method="post" enctype="multipart/form-data"` : ''} novalidate>
+<form class="enquiry-form" id="${id}" data-form-name="${esc(name)}" data-endpoint="${esc(endpoint)}" data-thanks="${L('thank-you/')}" data-email="${esc(site.contact.email)}" data-whatsapp="${esc(wa)}"
+  ${endpoint ? `action="${esc(action)}" method="post" enctype="multipart/form-data"` : ''} novalidate>
   <noscript><div class="notice notice-warn"><p><strong>JavaScript is turned off.</strong> ${endpoint ? 'You can still submit this form.' : `Please email your enquiry to <a href="mailto:${site.contact.email}">${site.contact.email}</a> or call ${site.contact.phoneDisplay}.`}</p></div></noscript>
   <div class="error-summary" tabindex="-1" role="alert" hidden>
     <h2>Please check the following</h2>
     <ul></ul>
   </div>
   <input type="hidden" name="_subject" value="${esc(subject)}">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_next" value="${new URL('thank-you/', site.url).href}">
   <div class="hp" aria-hidden="true">
     <label for="${id}-website-url">Leave this field empty</label>
-    <input type="text" id="${id}-website-url" name="_gotcha" tabindex="-1" autocomplete="off">
+    <input type="text" id="${id}-website-url" name="_honey" tabindex="-1" autocomplete="off">
   </div>
   ${fields}
   <p class="form-note"><span class="req" aria-hidden="true">*</span> Required field</p>
