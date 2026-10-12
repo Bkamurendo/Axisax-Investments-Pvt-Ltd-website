@@ -9,7 +9,7 @@ Built from the *Website Concept, Business Positioning & Development Blueprint*. 
 Requires Node.js 18 or later. There is nothing to install.
 
 ```bash
-npm run serve   # build and preview at http://localhost:8080/Axisax-Investments-Pvt-Ltd-website/
+npm run serve   # build and preview at http://localhost:8080/
 npm run build   # build the site into dist/
 npm run check   # build, then check for broken links, duplicate ids and unlabelled form fields
 ```
@@ -67,6 +67,8 @@ How it works:
 **Changing the address or provider:** edit `forms` in `src/data/site.js`. After activation, FormSubmit also offers a random alias you can use in place of the email address in the URL. To switch to another provider (e.g. Formspree, which adds a dashboard), paste its endpoint URLs there instead. Leaving an endpoint empty turns that form's online sending off.
 
 ## Deployment (no GitHub Actions needed)
+
+**Live site:** https://axisaxinvestments.netlify.app/ (Netlify, Option B below). Netlify rebuilds and republishes automatically whenever this repository's deployed branch changes.
 
 A domain is only the address. The site also needs a host. Pick one of these:
 
