@@ -1,7 +1,8 @@
-// Product categories grouped under General Supplies & Procurement (Blueprint §7).
+// Product categories supplied by Axisax (Blueprint §7 and revised positioning).
 //
 // - Set `published: false` for any category Axisax is not yet ready to support.
-// - `items` lists typical items we can source on request. It is NOT a stock list.
+// - `items` lists example products in the category. Keep fulfilment status honest:
+//   some items may be stocked, others are ordered after the customer confirms.
 // - `products` is reserved for future product pages (Blueprint §9). Each product
 //   should carry a description, specifications, unit of measure, pack basis and,
 //   only if current and approved, a currency-labelled price.
@@ -10,13 +11,13 @@ export const categories = [
   {
     slug: 'medical-healthcare-supplies',
     name: 'Medical & Healthcare Supplies',
-    short: 'Medical consumables sourced to your specification.',
+    short: 'Medical consumables supplied to your specification.',
     icon: 'medical',
     featured: true,
     published: true,
     seoTitle: 'Medical Consumables Supplier Enquiries in Zimbabwe',
     intro:
-      'We help clinics, pharmacies, institutions and organisations source medical and healthcare consumables. Requests are specification-led: tell us the item, size, brand preference, quantity and delivery point, and we will source and quote.',
+      'We supply medical and healthcare consumables to clinics, pharmacies, institutions and organisations. Orders are specification-led: tell us the item, size, brand preference, quantity and delivery point, and we will confirm availability and price.',
     items: [
       'Examination and surgical gloves',
       'Syringes, needles and cannulas',
@@ -46,7 +47,7 @@ export const categories = [
     published: true,
     seoTitle: 'Thermal Till Rolls, Office Paper & Stationery in Zimbabwe',
     intro:
-      'Retailers, offices and businesses rely on a steady supply of everyday consumables. We source POS and thermal rolls, paper, labels, printer consumables, stationery and related items for once-off and recurring orders.',
+      'Retailers, offices and businesses rely on a steady supply of everyday consumables. We supply POS and thermal rolls, paper, labels, printer consumables, stationery and related items for once-off and recurring orders.',
     items: [
       'Thermal and POS till rolls (various widths and lengths)',
       'Card machine rolls',
@@ -73,7 +74,7 @@ export const categories = [
     published: true,
     seoTitle: 'Cleaning & Hygiene Supplies in Zimbabwe',
     intro:
-      'We source cleaning chemicals, tissue products, hand-hygiene supplies and cleaning equipment for offices, schools, clinics, hospitality venues and institutions.',
+      'We supply cleaning chemicals, tissue products, hand-hygiene supplies and cleaning equipment for offices, schools, clinics, hospitality venues and institutions.',
     items: [
       'Detergents, degreasers and floor cleaners',
       'Bleach and disinfectants',
@@ -98,7 +99,7 @@ export const categories = [
     published: true,
     seoTitle: 'PPE, Safety Boots & Workwear Supplies in Zimbabwe',
     intro:
-      'We source personal protective equipment and workwear for construction, mining, agriculture, manufacturing, security and service teams.',
+      'We supply personal protective equipment and workwear for construction, mining, agriculture, manufacturing, security and service teams.',
     items: [
       'Work suits, overalls and reflective vests',
       'Safety boots and gumboots',
@@ -148,7 +149,7 @@ export const categories = [
     published: true,
     seoTitle: 'Packaging & Commercial Supplies in Zimbabwe',
     intro:
-      'We source packaging for retail, food service, logistics and small manufacturing businesses.',
+      'We supply packaging for retail, food service, logistics and small manufacturing businesses.',
     items: [
       'Cartons and corrugated boxes',
       'Plastic and paper carrier bags',
@@ -172,7 +173,7 @@ export const categories = [
     published: true,
     seoTitle: 'Electrical & Lighting Supplies in Zimbabwe',
     intro:
-      'We source electrical consumables and lighting for maintenance, fit-out and project requirements. Installation work, where needed, is carried out by appropriately qualified third parties.',
+      'We supply electrical consumables and lighting for maintenance, fit-out and project requirements. Installation work, where needed, is carried out by appropriately qualified third parties.',
     items: [
       'Cables and wiring accessories',
       'Switches, sockets and plugs',
@@ -196,7 +197,7 @@ export const categories = [
     published: true,
     seoTitle: 'Hardware, Tools & Maintenance Supplies in Zimbabwe',
     intro:
-      'From hand tools to plumbing fittings, we source hardware and maintenance supplies for facilities, workshops and projects.',
+      'From hand tools to plumbing fittings, we supply hardware and maintenance supplies for facilities, workshops and projects.',
     items: [
       'Hand and power tools',
       'Fasteners, fixings and adhesives',
@@ -220,7 +221,7 @@ export const categories = [
     published: true,
     seoTitle: 'Agriculture & Farm Supplies in Zimbabwe',
     intro:
-      'We source agricultural tools, irrigation components and farm consumables for farmers, cooperatives and agricultural programmes.',
+      'We supply agricultural tools, irrigation components and farm consumables for farmers, cooperatives and agricultural programmes.',
     items: [
       'Hand tools and farm implements',
       'Irrigation pipes, fittings and drip kits',
@@ -246,7 +247,7 @@ export const categories = [
     published: true,
     seoTitle: 'Catering & Hospitality Supplies in Zimbabwe',
     intro:
-      'We source kitchen equipment, catering disposables and guest consumables for lodges, hotels, canteens, events and institutional kitchens.',
+      'We supply kitchen equipment, catering disposables and guest consumables for lodges, hotels, canteens, events and institutional kitchens.',
     items: [
       'Disposable cups, plates and cutlery',
       'Kitchen utensils and cookware',
@@ -270,7 +271,7 @@ export const categories = [
     published: true,
     seoTitle: 'Security & Safety Supplies in Zimbabwe',
     intro:
-      'We source safety and security supplies for premises, sites and vehicles. Servicing, certification and installation are arranged with qualified third parties where required.',
+      'We supply safety and security supplies for premises, sites and vehicles. Servicing, certification and installation are arranged with qualified third parties where required.',
     items: [
       'Fire extinguishers and fire blankets',
       'First aid kits',
@@ -294,7 +295,7 @@ export const categories = [
     published: true,
     seoTitle: 'Household & General Consumer Products in Zimbabwe',
     intro:
-      'We source household goods and general consumer products for organisations, programmes and individual customers.',
+      'We supply household goods and general consumer products for organisations, programmes and individual customers.',
     items: [
       'Kitchenware and household utensils',
       'Bedding and blankets',
@@ -317,7 +318,7 @@ export const categories = [
     published: true,
     seoTitle: 'Promotional & Corporate Branded Supplies in Zimbabwe',
     intro:
-      'We source branded and corporate items for marketing, events, staff and client programmes. Artwork is provided by the customer or a designer appointed by the customer.',
+      'We supply branded and corporate items for marketing, events, staff and client programmes. Artwork is provided by the customer or a designer appointed by the customer.',
     items: [
       'Branded T-shirts, caps and uniforms',
       'Branded pens, notebooks and diaries',

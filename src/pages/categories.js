@@ -6,14 +6,14 @@ const index = {
   path: 'product-categories/',
   title: 'Product Categories',
   description:
-    'Product categories Axisax sources in Zimbabwe: medical, office and POS, cleaning, PPE, education, packaging, electrical, hardware, agriculture, catering and more.',
+    'Products Axisax supplies in Zimbabwe: medical, office and POS, cleaning, PPE, education, packaging, electrical, hardware, agriculture, catering and more.',
   body: (L) => `
 ${pageHero(
   {
-    eyebrow: 'General Supplies & Procurement',
+    eyebrow: 'Products & supplies',
     title: 'Product Categories',
-    lead: 'Browse the categories we source. Items listed are examples, not a stock list. Availability and pricing are confirmed on each quotation.',
-    crumbs: [['general-supplies-procurement/', 'General Supplies & Procurement'], ['product-categories/', 'Product Categories']],
+    lead: 'Browse the products we supply. Availability, lead time and price for each item are confirmed on your quotation.',
+    crumbs: [['products-supply/', 'Product Supply'], ['product-categories/', 'Product Categories']],
   },
   L,
 )}
@@ -23,11 +23,11 @@ ${pageHero(
     <div class="card card-wide">
       <span class="card-icon">${icon('layers')}</span>
       <div>
-        <h2 class="h3"><a href="${L('institutional-project-procurement/')}">Special Projects &amp; Institutional Procurement</a></h2>
-        <p>Multi-category RFQs, BOQs and specialist sourcing for institutions and projects.</p>
+        <h2 class="h3"><a href="${L('institutional-contract-supply/')}">Institutional, Contract &amp; Project Supply</a></h2>
+        <p>Bulk, recurring and multi-category supply for institutions, contracts and <a href="${L('special-projects/')}">special projects</a>.</p>
       </div>
     </div>
-    <p class="muted center">Can't find your category? <a href="${L('request-a-quote/?category=other')}">Send us your requirement</a> and we will tell you whether we can source it.</p>
+    <p class="muted center">Can't find your category? <a href="${L('request-a-quote/?category=other')}">Send us your requirement</a> and we will tell you whether we can supply it.</p>
   </div>
 </section>
 ${ctaBand(L)}`,
@@ -36,7 +36,7 @@ ${ctaBand(L)}`,
 const detail = (c) => ({
   path: `product-categories/${c.slug}/`,
   title: c.seoTitle,
-  description: `${c.name}: ${c.short} Sourced to your specification by Axisax in Zimbabwe. Request a quotation with sizes, quantities and delivery location.`,
+  description: `${c.name}: ${c.short} Supplied to your specification by Axisax in Zimbabwe. Request a quotation with sizes, quantities and delivery location.`,
   body: (L) => `
 ${pageHero(
   {
@@ -51,9 +51,9 @@ ${pageHero(
 <section class="section">
   <div class="container split split-top">
     <div class="prose">
-      <h2>Typical items we can source</h2>
+      <h2>Products we supply</h2>
       ${checkList(c.items.map(esc))}
-      <p class="small muted">This list shows examples only. It is not a stock list. Brands, availability, lead times and prices are confirmed on each quotation.</p>
+      <p class="small muted">Examples of products in this category; other items are available on request. Some items may be available from stock, others are ordered for you after you confirm. Brands, availability, lead times and prices are confirmed on each quotation.</p>
     </div>
     <aside class="info-card">
       <h2>${icon('clipboard')} Information to include</h2>

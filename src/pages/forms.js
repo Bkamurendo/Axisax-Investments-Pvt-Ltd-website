@@ -8,10 +8,11 @@ const units = ['Each', 'Box', 'Pack', 'Carton', 'Ream', 'Roll', 'Pair', 'Set', '
 
 function requestOptions() {
   const services = [
-    { value: 'general-supplies', label: 'General supplies (mixed or not sure)' },
+    { value: 'general-supplies', label: 'Mixed products or not sure' },
     { value: 'business-consultancy', label: 'Business Consultancy' },
     { value: 'connectivity-ict', label: 'Connectivity & ICT' },
-    { value: 'institutional-project', label: 'Institutional / project procurement' },
+    { value: 'institutional-contract', label: 'Institutional & contract supply' },
+    { value: 'special-projects', label: 'Special project' },
   ];
   if (site.features.constructionProperty) services.push({ value: 'construction-property', label: 'Construction & Property Services' });
   return [
@@ -52,7 +53,7 @@ const quote = {
   description: 'Request a quotation from Axisax. Share your product or service requirement, specification, quantity, delivery location and required date. Attach a BOQ or RFQ.',
   scripts: ['assets/js/forms.js'],
   body: (L) => `
-${pageHero({ eyebrow: 'Get a quotation', title: 'Request a Quote', lead: 'Tell us what you need. We will clarify the details, source and send you a written quotation.', crumbs: [['request-a-quote/', 'Request a Quote']] }, L)}
+${pageHero({ eyebrow: 'Get a quotation', title: 'Request a Supply or Service Quote', lead: 'Order products, book a service or request a contract or project quotation. We will confirm the details and send you a written quotation.', crumbs: [['request-a-quote/', 'Request a Quote']] }, L)}
 <section class="section">
   <div class="container form-layout">
     <div>
@@ -80,6 +81,7 @@ ${pageHero({ eyebrow: 'Get a quotation', title: 'Request a Quote', lead: 'Tell u
         ${radios({ name: 'preferred_contact', legend: 'Preferred way to contact you', options: ['Email', 'Phone call', 'WhatsApp'] })}
 
         <h2 class="form-section">2. What you need</h2>
+        ${radios({ name: 'request_type', legend: 'What would you like to do?', required: true, options: ['Order products', 'Book a service', 'Set up contract or recurring supply', 'Discuss a project'] })}
         ${select({ name: 'category', label: 'Product category or service', required: true, options: requestOptions(), placeholder: 'Choose a category or service' })}
         <div data-line-items>${lineItem(1)}</div>
         <button class="btn btn-secondary add-item" type="button" data-add-item hidden>+ Add another item</button>
@@ -104,7 +106,7 @@ ${pageHero({ eyebrow: 'Get a quotation', title: 'Request a Quote', lead: 'Tell u
     <div class="form-side">
       <aside class="info-card">
         <h2>What happens next</h2>
-        ${checkList(['We review your request and contact you if anything needs clarifying.', 'We source and prepare a written quotation.', 'The quotation states price, currency, validity, availability and delivery.', 'Nothing is ordered until you confirm.'])}
+        ${checkList(['We review your request and contact you if anything needs clarifying.', 'We prepare a written quotation or service proposal.', 'The quotation states price, currency, validity, availability and delivery.', 'We proceed only after you confirm.'])}
       </aside>
       ${sideContact()}
     </div>

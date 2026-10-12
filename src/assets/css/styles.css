@@ -449,3 +449,14 @@ input:focus, select:focus, textarea:focus { outline: 3px solid rgba(240, 163, 58
   .hero, .page-hero { background: none; color: #000; }
   .hero h1, .page-hero h1, .lead { color: #000; }
 }
+.steps-note { margin: 20px 0 0; color: var(--muted); }
+.hero h1 { font-size: clamp(2rem, 4.6vw, 3rem); }
+.hero-links { display: flex; flex-wrap: wrap; gap: 6px 24px; margin: 18px 0 0; }
+.hero-links a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--white); font-weight: 600; text-decoration-color: rgba(255, 255, 255, .45); }
+.hero-links a:hover { color: var(--gold); }
+@media (min-width: 620px) { .card-grid-5 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) { .card-grid-5 { grid-template-columns: repeat(6, 1fr); } .card-grid-5 > li { grid-column: span 2; } .card-grid-5 > li:nth-child(4) { grid-column: 2 / span 2; } }
+@media (min-width: 900px) { .split-even { grid-template-columns: 1fr 1fr; } }
+.engage-steps { padding-left: 1.4em; }
+.engage-steps li { margin-bottom: .6em; padding-left: .3em; }
+.engage-steps li::marker { color: var(--emerald-dark); font-weight: 700; }

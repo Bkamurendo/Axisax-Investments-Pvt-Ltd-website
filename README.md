@@ -1,8 +1,8 @@
 # AXISAX INVESTMENTS (PRIVATE) LIMITED — Website
 
-Corporate website for Axisax, a Zimbabwean general supplies, procurement and business-services company. **Procurement Made Simple.**
+Corporate website for Axisax, a Zimbabwean supplier and service provider across general supplies, institutional supply, specialist services and procurement. **Supplies. Services. Solutions.**
 
-Built from the *Website Concept, Business Positioning & Development Blueprint*. It is a fast, mobile-first static site with no runtime dependencies, so it can be hosted almost anywhere.
+Built from the *Website Concept, Business Positioning & Development Blueprint* (revised edition: Axisax is presented as the company customers buy goods from and engage for services; procurement and sourcing are capabilities, not the whole identity). It is a fast, mobile-first static site with no runtime dependencies, so it can be hosted almost anywhere.
 
 ## Quick start
 
@@ -22,17 +22,20 @@ Upload the contents of `dist/` to any web host, or let the included GitHub Actio
 | --- | --- |
 | Home | `/` |
 | About Axisax | `/about/` |
-| General Supplies & Procurement | `/general-supplies-procurement/` |
+| Product Supply | `/products-supply/` |
 | Product Categories (index + 13 category pages) | `/product-categories/…` |
 | Business Consultancy | `/business-consultancy/` |
 | Connectivity & ICT | `/connectivity-ict/` |
-| Institutional & Project Procurement | `/institutional-project-procurement/` |
+| Institutional & Contract Supply | `/institutional-contract-supply/` |
+| Special Projects | `/special-projects/` |
 | Construction & Property Services (**off by default**) | `/construction-property-services/` |
 | Suppliers & Partnerships (supplier form) | `/suppliers-partnerships/` |
 | Request a Quote (RFQ form) | `/request-a-quote/` |
 | Contact (contact form) | `/contact/` |
 | Privacy Notice, Terms & Conditions | `/privacy-notice/`, `/terms-and-conditions/` |
-| 404 page, `sitemap.xml`, `robots.txt` | |
+| Thank-you page, 404 page, `sitemap.xml`, `robots.txt` | |
+
+Old addresses (`/general-supplies-procurement/`, `/institutional-project-procurement/`) redirect to their replacements on Netlify.
 
 Features: responsive layout and mobile menu, keyboard and screen-reader support, skip link, accessible form errors, SEO titles and descriptions, canonical URLs, Organization and FAQ structured data, and a print stylesheet. Category links pre-select the category on the quote form (e.g. `/request-a-quote/?category=cleaning-hygiene`), and the RFQ form supports up to 20 line items plus attachments.
 

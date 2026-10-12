@@ -32,7 +32,7 @@ ${pageHero({ title: 'Privacy Notice', lead: `Last updated: ${LAST_UPDATED}`, cru
     <h2>How we use your information</h2>
     <ul>
       <li>to respond to enquiries and prepare quotations;</li>
-      <li>to source products and services from suppliers on your behalf;</li>
+      <li>to supply products and deliver services, including ordering items from our suppliers where needed;</li>
       <li>to process, deliver and follow up on orders you confirm;</li>
       <li>to assess and contact suppliers and partners;</li>
       <li>to keep business records and meet legal obligations;</li>
@@ -78,7 +78,7 @@ ${pageHero({ title: 'Terms & Conditions', lead: `Last updated: ${LAST_UPDATED}`,
     <p>These terms apply to your use of this website and to quotations, orders and services provided by ${esc(c.legalName)} (company number ${esc(c.number)}) (“Axisax”). Where a written quotation, order confirmation or service agreement states different terms, those written terms apply to that transaction.</p>
 
     <h2>1. Website information</h2>
-    <p>Product categories and item lists on this website describe what we can source. They are not a stock list or an offer to sell. Product images, where shown, are for illustration only.</p>
+    <p>Product categories and item lists on this website describe goods we supply. They are not an offer at a fixed price: prices, availability and lead times are confirmed in a written quotation. Product images, where shown, are for illustration only.</p>
 
     <h2>2. Quotations</h2>
     <ul>
@@ -89,7 +89,7 @@ ${pageHero({ title: 'Terms & Conditions', lead: `Last updated: ${LAST_UPDATED}`,
     </ul>
 
     <h2>3. Availability</h2>
-    <p>Most items are sourced from suppliers on request. Availability, brands and lead times are confirmed on the quotation and again when an order is placed. If a supplier cannot fulfil an item, we will tell you promptly and offer an alternative or adjust the order.</p>
+    <p>Some items may be available from stock; others are ordered from our suppliers after you confirm. Availability, brands and lead times are confirmed on the quotation and again when an order is placed. If a supplier cannot fulfil an item, we will tell you promptly and offer an alternative or adjust the order.</p>
 
     <h2>4. Orders and payment</h2>
     <ul>
@@ -102,7 +102,7 @@ ${pageHero({ title: 'Terms & Conditions', lead: `Last updated: ${LAST_UPDATED}`,
     <p>Delivery, collection or coordination arrangements, costs and estimated timelines are stated on the quotation. Estimated timelines depend on suppliers and transport and are not guaranteed unless agreed in writing. Please check goods on delivery or collection and report any shortage or damage as soon as possible.</p>
 
     <h2>6. Cancellation</h2>
-    <p>Because many items are sourced or ordered specifically for you, cancellation after order confirmation may not be possible or may incur costs already committed to suppliers. Any cancellation terms are stated on the quotation.</p>
+    <p>Because many items are ordered specifically for you, cancellation after order confirmation may not be possible or may incur costs already committed to suppliers. Any cancellation terms are stated on the quotation.</p>
 
     <h2>7. Returns</h2>
     <p>If goods are faulty, damaged in transit or do not match the confirmed order, contact us promptly with photos and your order details and we will work with you and the supplier on a replacement, credit or other remedy. Items ordered to your specification, consumables that have been opened and hygiene or medical products may not be returnable unless faulty. Return conditions are stated on the quotation where they differ.</p>
@@ -149,7 +149,7 @@ const notFound = {
 <section class="section">
   <div class="container narrow">
     <ul class="link-list">
-      <li><a href="${L('general-supplies-procurement/')}">General Supplies &amp; Procurement</a></li>
+      <li><a href="${L('products-supply/')}">Product Supply</a></li>
       <li><a href="${L('product-categories/')}">Product Categories</a></li>
       <li><a href="${L('business-consultancy/')}">Business Consultancy</a></li>
       <li><a href="${L('contact/')}">Contact Axisax</a></li>

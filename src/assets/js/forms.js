@@ -310,6 +310,9 @@
     var cat = params.get('category');
     var sel = $('select[name="category"]', form);
     if (cat && sel && $$('option', sel).some(function (o) { return o.value === cat; })) sel.value = cat;
+    var type = { 'special-projects': 'Discuss a project', 'institutional-contract': 'Set up contract or recurring supply', 'business-consultancy': 'Book a service' }[cat];
+    var radio = type && $('input[name="request_type"][value="' + type + '"]', form);
+    if (radio) radio.checked = true;
   }
 
   $$('form.enquiry-form').forEach(function (form) {

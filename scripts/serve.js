@@ -25,7 +25,7 @@ createServer(async (req, res) => {
   if (!url.pathname.startsWith(base)) { res.writeHead(302, { Location: base }); return res.end(); }
   let path = decodeURIComponent(url.pathname.slice(base.length));
   const file = await resolve(path);
-  if (file && !path.endsWith('/') && file.endsWith('index.html') && !path.endsWith('index.html')) {
+  if (file && path && !path.endsWith('/') && file.endsWith('index.html') && !path.endsWith('index.html')) {
     res.writeHead(301, { Location: url.pathname + '/' + url.search }); return res.end();
   }
   const target = file || join(dist, '404.html');

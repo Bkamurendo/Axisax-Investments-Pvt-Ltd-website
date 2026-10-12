@@ -39,8 +39,13 @@ await writeFile(join(out, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?
 await writeFile(join(out, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${new URL('sitemap.xml', site.url).href}\n`);
 // Tell GitHub Pages to serve files as-is.
 await writeFile(join(out, '.nojekyll'), '');
-// Apache/cPanel hosting: serve the custom 404 page and force HTTPS.
 const base = new URL(site.url).pathname;
+// Netlify: send old page addresses (renamed in the revised blueprint) to their replacements.
+await writeFile(
+  join(out, '_redirects'),
+  `${base}general-supplies-procurement/* ${base}products-supply/ 301\n${base}institutional-project-procurement/* ${base}institutional-contract-supply/ 301\n`,
+);
+// Apache/cPanel hosting: serve the custom 404 page and force HTTPS.
 await writeFile(
   join(out, '.htaccess'),
   `ErrorDocument 404 ${base}404.html\n\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteCond %{HTTPS} !=on\nRewriteCond %{HTTP:X-Forwarded-Proto} !https\nRewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\n</IfModule>\n`,

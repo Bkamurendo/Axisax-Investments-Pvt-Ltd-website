@@ -18,10 +18,10 @@ export const site = {
     number: '50006A0872025',
     incorporated: '9 July 2025',
     address: ['Stand Number 170', 'Binga Business Centre', 'Binga', 'Zimbabwe'],
-    tagline: 'Procurement Made Simple.',
+    tagline: 'Supplies. Services. Solutions.',
     supportingLine: 'One Company. Multiple Solutions.',
     description:
-      'AXISAX INVESTMENTS (PRIVATE) LIMITED is a Zimbabwean general supplies, procurement and business-services company helping businesses, institutions and organisations source products and access practical support for their operational requirements.',
+      'AXISAX INVESTMENTS (PRIVATE) LIMITED is a Zimbabwean supplier and service provider delivering general supplies, business services, institutional supply and project solutions to businesses, organisations and individuals.',
   },
 
   contact: {

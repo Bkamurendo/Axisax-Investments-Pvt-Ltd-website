@@ -23,10 +23,11 @@ export function whatsappLink(text = '') {
 
 function serviceLinks() {
   const links = [
-    ['general-supplies-procurement/', 'General Supplies & Procurement'],
+    ['products-supply/', 'Product Supply'],
     ['business-consultancy/', 'Business Consultancy'],
     ['connectivity-ict/', 'Connectivity & ICT'],
-    ['institutional-project-procurement/', 'Institutional & Project Procurement'],
+    ['institutional-contract-supply/', 'Institutional & Contract Supply'],
+    ['special-projects/', 'Special Projects'],
   ];
   if (site.features.constructionProperty) links.push(['construction-property-services/', 'Construction & Property Services']);
   return links;
@@ -51,13 +52,13 @@ function nav(L, current) {
     <ul class="nav-list">
       <li class="nav-item"><a class="nav-link" href="${L()}"${isCurrent('')}>Home</a></li>
       <li class="nav-item"><a class="nav-link" href="${L('about/')}"${isCurrent('about/')}>About</a></li>
-      ${sub('sub-services', 'Services', inSection(['general-supplies', 'business-consultancy', 'connectivity', 'institutional', 'construction']), serviceLinks())}
       ${sub(
         'sub-products',
-        'Product Categories',
-        inSection(['product-categories']),
-        [['product-categories/', 'All categories'], ...cats.map((c) => [`product-categories/${c.slug}/`, c.name])],
+        'Products',
+        inSection(['product-categories', 'products-supply']),
+        [['products-supply/', 'Product Supply overview'], ['product-categories/', 'All product categories'], ...cats.map((c) => [`product-categories/${c.slug}/`, c.name])],
       )}
+      ${sub('sub-services', 'Services', inSection(['business-consultancy', 'connectivity', 'institutional', 'special-projects', 'construction']), serviceLinks().slice(1))}
       <li class="nav-item"><a class="nav-link" href="${L('suppliers-partnerships/')}"${isCurrent('suppliers-partnerships/')}>Suppliers</a></li>
       <li class="nav-item"><a class="nav-link" href="${L('contact/')}"${isCurrent('contact/')}>Contact</a></li>
       <li class="nav-item nav-cta"><a class="btn btn-primary" href="${L('request-a-quote/')}">Request a Quote</a></li>
@@ -102,7 +103,7 @@ function footer(L) {
     <div class="footer-about">
       <p class="footer-brand">AXISAX</p>
       <p>${esc(c.legalName)}</p>
-      <p class="muted-light">A Zimbabwean general supplies, procurement and business-services company.</p>
+      <p class="muted-light">A Zimbabwean supplier and service provider.</p>
       <p class="muted-light">Company number: ${esc(c.number)}</p>
     </div>
     <div>
@@ -220,7 +221,7 @@ export function pageHero({ eyebrow, title, lead, crumbs = [], actions = '' }, L)
 </section>`;
 }
 
-export function ctaBand(L, { title = 'Have a requirement in mind?', text = 'Send us your list, specification or BOQ. We will clarify the details, source and send you a quotation.', primary = ['request-a-quote/', 'Request a Quote'], secondary = ['contact/', 'Contact Axisax'] } = {}) {
+export function ctaBand(L, { title = 'Ready to order or engage Axisax?', text = 'Send us your product list, specification or service requirement. We will confirm availability, price and timelines in a written quotation.', primary = ['request-a-quote/', 'Request a Quote'], secondary = ['contact/', 'Contact Axisax'] } = {}) {
   return `
 <section class="cta-band">
   <div class="container cta-inner">
@@ -242,15 +243,16 @@ export function checkList(items) {
 
 export function processSteps() {
   const steps = [
-    ['clipboard', 'Share your requirement', 'Send your list, specification, BOQ or RFQ by form, email or WhatsApp.'],
-    ['chat', 'Clarify specifications', 'We confirm sizes, standards, brands, quantities and delivery needs.'],
-    ['search', 'Source and quote', 'We source from suppliers, compare where possible and send a written quotation.'],
-    ['checkCircle', 'Confirm the order', 'You approve the quotation, terms and timelines before anything is ordered.'],
-    ['pin', 'Deliver or coordinate', 'We deliver, arrange collection or coordinate as agreed in the quotation.'],
+    ['search', 'Browse products or services', 'Explore our product categories and services, or tell us what you are looking for.'],
+    ['clipboard', 'Select or describe your need', 'Send your product list, specification, BOQ or service requirement by form, email or WhatsApp.'],
+    ['file', 'Receive a quotation or proposal', 'We confirm price, availability and lead time, or send a service proposal with scope and deliverables.'],
+    ['checkCircle', 'Confirm your order', 'You approve the quotation or engagement terms before we proceed.'],
+    ['boxes', 'We supply or deliver', 'Axisax supplies the goods or delivers the agreed service, as set out in your quotation.'],
   ];
   return `<ol class="steps">${steps
     .map(([ic, t, d], i) => `<li class="step"><span class="step-num" aria-hidden="true">${i + 1}</span>${icon(ic, 'icon step-icon')}<h3>${t}</h3><p>${d}</p></li>`)
-    .join('')}</ol>`;
+    .join('')}</ol>
+  <p class="steps-note">Need something we don't usually carry? When an item needs special sourcing, we find suitable supply options and manage it through to delivery.</p>`;
 }
 
 export function categoryCards(L, cats) {
