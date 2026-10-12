@@ -460,3 +460,8 @@ input:focus, select:focus, textarea:focus { outline: 3px solid rgba(240, 163, 58
 .engage-steps { padding-left: 1.4em; }
 .engage-steps li { margin-bottom: .6em; padding-left: .3em; }
 .engage-steps li::marker { color: var(--emerald-dark); font-weight: 700; }
+/* Hero headline: one phrase per line, sized so the longest phrase always fits. */
+.hero .hero-title { font-size: clamp(1.6rem, 8vw, 3rem); line-height: 1.12; }
+.hero-title span { display: block; }
+@media (min-width: 320px) { .hero-title span { white-space: nowrap; } }
+@media (min-width: 960px) { .hero .hero-title { font-size: clamp(2.2rem, 3.6vw, 3rem); } }

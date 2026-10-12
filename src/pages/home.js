@@ -64,7 +64,7 @@ export default {
   <div class="container hero-inner">
     <div class="hero-copy">
       <p class="eyebrow eyebrow-light">${esc(site.company.tagline)}</p>
-      <h1>Your Supplier. Your Service Provider. Your Business Partner.</h1>
+      <h1 class="hero-title"><span>Your Supplier.</span> <span>Your Service Provider.</span> <span>Your Business Partner.</span></h1>
       <p class="lead">${esc(site.company.legalName)} supplies products and delivers services for businesses, institutions and organisations across Zimbabwe. From everyday business consumables and specialist supplies to consultancy and project services, we help customers get the goods and support they need from one company.</p>
       <div class="hero-actions">
         <a class="btn btn-primary btn-lg" href="${L('product-categories/')}">Browse Products &amp; Supplies</a>
