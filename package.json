@@ -8,6 +8,7 @@
   "scripts": {
     "build": "node build.js",
     "check": "node build.js && node scripts/check.js",
-    "serve": "node build.js && node scripts/serve.js"
+    "serve": "node build.js && node scripts/serve.js",
+    "package": "node build.js && node scripts/check.js && cd dist && rm -f ../axisax-website.zip && zip -qr ../axisax-website.zip . && echo 'Created axisax-website.zip'"
   }
 }

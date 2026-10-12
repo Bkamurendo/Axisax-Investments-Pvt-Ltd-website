@@ -1,0 +1,8 @@
+# Netlify: builds on Netlify's servers (no GitHub Actions needed).
+# Set SITE_URL under Site configuration → Environment variables.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"

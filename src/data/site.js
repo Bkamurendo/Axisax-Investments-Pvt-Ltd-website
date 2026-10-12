@@ -1,10 +1,16 @@
 // Central company and site configuration.
 // Check every value against company records before publishing (Blueprint §10).
 
+function withSlash(u) {
+  return u.endsWith('/') ? u : u + '/';
+}
+
 export const site = {
-  // Public URL where the site is hosted. Used for canonical links, the sitemap
-  // and the 404 page. Change this when a company domain is set up.
-  url: 'https://bkamurendo.github.io/Axisax-Investments-Pvt-Ltd-website/',
+  // Public URL where the site is hosted, ending in '/'. Used for canonical
+  // links, the sitemap and the 404 page. Set it to the company domain once
+  // registered, or override per build with the SITE_URL environment variable
+  // (e.g. in the Cloudflare Pages or Netlify settings).
+  url: withSlash(process.env.SITE_URL || 'https://bkamurendo.github.io/Axisax-Investments-Pvt-Ltd-website/'),
 
   company: {
     legalName: 'AXISAX INVESTMENTS (PRIVATE) LIMITED',

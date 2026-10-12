@@ -1,8 +1,8 @@
 name: Build and deploy to GitHub Pages
 
+# Manual only while GitHub Actions is unavailable on this account. To publish
+# automatically again, add back:  push: { branches: [main] }
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

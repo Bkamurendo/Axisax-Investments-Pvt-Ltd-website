@@ -66,13 +66,27 @@ How it works:
 
 **Changing the address or provider:** edit `forms` in `src/data/site.js`. After activation, FormSubmit also offers a random alias you can use in place of the email address in the URL. To switch to another provider (e.g. Formspree, which adds a dashboard), paste its endpoint URLs there instead. Leaving an endpoint empty turns that form's online sending off.
 
-## Deployment
+## Deployment (no GitHub Actions needed)
 
-**GitHub Pages:** `.github/workflows/deploy.yml` builds, checks and publishes the site on every push to `main`. Enable it under *Settings → Pages → Build and deployment → Source: GitHub Actions*.
+A domain is only the address. The site also needs a host. Pick one of these:
 
-**Custom domain:** once Axisax owns a domain, set `url` in `src/data/site.js` (e.g. `https://www.example.co.zw/`) so canonical links, the sitemap and the 404 page use it. Then configure the domain with your host.
+**Option A: Cloudflare Pages (recommended, free).** It builds on Cloudflare's servers, so it doesn't use GitHub Actions.
+1. Create a free Cloudflare account and go to *Workers & Pages → Create → Pages → Connect to Git*. Choose this repository.
+2. Set the build command to `npm run build` and the output directory to `dist`. Add the environment variable `SITE_URL` = `https://www.yourdomain.co.zw/`.
+3. Under *Custom domains*, add your domain and follow the DNS instructions.
+Every change merged to the production branch republishes the site automatically.
 
-**Other hosts:** upload `dist/` and configure the host to serve `404.html` for missing pages.
+**Option B: Netlify (free).** *Add new site → Import from GitHub*, choose this repository, and the settings are read from `netlify.toml`. Set `SITE_URL` under *Environment variables*, then add your domain under *Domain management*.
+
+**Option C: Ordinary web hosting (cPanel / Apache)**, e.g. hosting bought together with a `.co.zw` domain:
+1. Set `url` in `src/data/site.js` to your domain, or run `SITE_URL=https://www.yourdomain.co.zw/ npm run package`.
+2. Run `npm run package`, which creates `axisax-website.zip`.
+3. In cPanel *File Manager*, upload the zip to `public_html`, then *Extract* it. The included `.htaccess` sets the 404 page and forces HTTPS, so turn on the free SSL certificate (AutoSSL / Let's Encrypt) in cPanel.
+Repeat steps 2–3 after each change.
+
+**GitHub Pages:** `.github/workflows/deploy.yml` is set to manual-only while Actions is unavailable on this account. Re-enable the `push` trigger to publish automatically again.
+
+After moving to a new address, activate FormSubmit again from the live site (see Forms).
 
 ## Decisions to confirm before launch (Blueprint §15–16)
 
